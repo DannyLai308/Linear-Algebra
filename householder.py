@@ -1,3 +1,5 @@
+# Student Name: Danny Lai - 400491405
+# Class: Linear Algebra - 4MA3
 import numpy as np
 
 def householder(input_matrix):
@@ -31,10 +33,18 @@ def householder(input_matrix):
             continue
         
         print(f'alpha{k+1} = {alpha}, e{k+1} = {e}, beta{k+1} = {beta}\n')
-        print(f'vector{k+1} = {vector[k:, k]}\n')
+        print(f'vector{k+1} = {vector[:, k]}\n')
 
+        for j in range (k, n_column):
+            gamma = np.around(vector[k:, k].T @ result_matrix[k:, j], decimals=0) # Calculate gamma j
+            result_matrix = result_matrix.astype(float)
+            # Calculate aj
+            result_matrix[k:, j] = result_matrix[k:, j] - np.around(((2*gamma)/beta)*vector[k:, k],decimals=0)
+            print(f'gamma = {gamma}\n')
+            print(f'H{k+1}a{k+1}: {result_matrix[:, j]}\n')
+        print(f'Resulting matrix:\n{result_matrix}\n') # Show result matrix after each column transformation
 
-        return result_matrix
+    return result_matrix
 
 M = np.array([[1, -1, 4],
             [1, 4,-2],
