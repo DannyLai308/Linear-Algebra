@@ -46,8 +46,8 @@ def householder(input_matrix):
 
     return result_matrix
 
-M = np.array([[1, -1, 4],
+A = np.array([[1, -1, 4],
             [1, 4,-2],
             [1, 4, 2],
             [1, -1, 0]], dtype=float)
-result_matrix = householder(M) 
+result_matrix = householder(A) 
