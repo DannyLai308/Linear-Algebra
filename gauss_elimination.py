@@ -38,7 +38,7 @@ def gauss_elimination_algo(A_matrix, b_vector):
     print(f'Lower triangular system of n x n matrix is: \n{I_matrix}\n')
 
     # Solve the given system
-    backward_substitution(n, A_matrix, forward_substitution(n, I_matrix, b))
+    return backward_substitution(n, A_matrix, forward_substitution(n, I_matrix, b))
 
 
 def forward_substitution(n, L_matrix, b):
@@ -63,12 +63,11 @@ def backward_substitution(n, U_matrix, y):
 
 
 # Assigned matrix and vector
-A = np.array([[1, 2, 1, -1],
-             [3, 2, 4, 4],
-             [4, 4, 3, 4],
-             [2, 0, 1, 5]], dtype=float)
+A = np.array([[1, 3, 0],
+             [0, 1, -3],
+             [2, 0, 1]], dtype=float)
 
-b = np.array([5, 16, 22, 15], dtype=float)
+b = np.array([-2, 2, 1,], dtype=float)
 
 x = gauss_elimination_algo(A,b)
 
