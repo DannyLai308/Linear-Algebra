@@ -2,10 +2,12 @@ import numpy as np
 
 def X_Y(n):
     global a, r, p
+    # Form the f(x) equation (with x = n years) from the loan payment values 
     f_n = a*(1+r)**n-p*(((1+r)**n-1)/r)
     return f_n
 
 def X_Y_derivative(n, h):
+    # Calculate f'(x) using h as the change in n years in each iteration 
     f_nprime = (X_Y(n+h) - X_Y(n))/h
     return f_nprime
 
@@ -16,8 +18,8 @@ def NewtonA(n_guess):
         if X_Y_derivative(n_guess, h0) == 0:
             print('Calculation error, please use a different guess for n\n')
             break
-        h = -X_Y(n_guess)/X_Y_derivative(n_guess, h0)
-        n_next = n_guess + h
+        h = -X_Y(n_guess)/X_Y_derivative(n_guess, h0) # h is the change in n years in each iteratio
+        n_next = n_guess + h # Calculate the next guessed years
         print(f'{k}\t\t {n_guess:.4f}\t\t\t{X_Y(n_guess):.4f}')
 
         # Check for error
